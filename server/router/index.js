@@ -6,7 +6,7 @@ const routes = Router();
 routes.post("/registration", UserControler.registration);
 routes.post("/login", UserControler.login);
 routes.post("/logout", UserControler.logout);
-routes.post("/activate/:link", UserControler.activate);
+routes.get("/activate/:link", UserControler.activate);
 routes.get("/refresh", UserControler.refresh);
 routes.get("/users", UserControler.getUsers);
 routes.delete("/users/:id", UserControler.deleteUser);

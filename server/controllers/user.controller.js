@@ -21,6 +21,10 @@ export class UserControler {
   }
   async activate(req, res, next) {
     try {
+      const linkActivate = req.params.link
+      await userService.activate(linkActivate)
+       res.redirect(process.env.CLIENT_URL)
+      
     } catch (e) {}
   }
   async refresh(req, res, next) {
