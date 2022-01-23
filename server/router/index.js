@@ -1,15 +1,14 @@
-import { Router } from "express"
-const router =  Router()
+import { Router } from "express";
+import UserControler from "../controllers/user.controller.js";
 
-router.post("/registration")
-router.post("/login")
-router.post("/logout")
-router.get("/activate/:link")
-router.get("/refresh")
-router.get("/users",(req,res) =>{
-    console.log(req)
-    res.send("hello router")
-   
-}) 
+const routes = Router();
 
-export default router
+routes.post("/registration", UserControler.registration);
+routes.post("/login", UserControler.login);
+routes.post("/logout", UserControler.logout);
+routes.post("/activate/:link", UserControler.activate);
+routes.get("/refresh", UserControler.refresh);
+routes.get("/users", UserControler.getUsers);
+routes.delete("/users/:id", UserControler.deleteUser);
+
+export default routes;
