@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export class ApiError extends Error {
   status;
   errors;
@@ -14,3 +15,22 @@ export class ApiError extends Error {
     return new ApiError(401, message, errors);
   }
 }
+=======
+
+export class ApiError extends Error {
+    status;
+    errors;
+    constructor(status, message, errors = []){
+        super(message)
+
+        this.status = status
+        this.errors = errors
+    }
+    static UnauthorizedError(){
+        return new ApiError( 401, "User is not authorized")
+    }
+    static BadRequest(message, errors = []){
+        return new ApiError( 401, message, errors)
+    }
+}
+>>>>>>> 7ad7205 (added errorMidlleware)
