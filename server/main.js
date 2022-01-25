@@ -1,7 +1,8 @@
-function someTest (        ...args){
+function someTest(...args) {      
 
 
-    const          test = "dddddddddddddddd"
-           
-               return test
+
+  const test   =                      "dddddddddddddddd";
+     
+       return test;
 }
