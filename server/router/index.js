@@ -1,13 +1,15 @@
 import { Router } from "express";
 import UserControler from "../controllers/user.controller.js";
-import { body } from "express-validator"
+import { body } from "express-validator";
 
 const routes = Router();
 
-routes.post("/registration", 
-body("email").isEmail(),
-body("password").isLength({min:4, max: 16}),
-UserControler.registration);
+routes.post(
+  "/registration",
+  body("email").isEmail(),
+  body("password").isLength({ min: 4, max: 16 }),
+  UserControler.registration,
+);
 routes.post("/login", UserControler.login);
 routes.post("/logout", UserControler.logout);
 routes.get("/activate/:link", UserControler.activate);

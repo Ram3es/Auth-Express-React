@@ -10,7 +10,7 @@ export class UserService {
   async createUser(email, password) {
     const candidate = await userModel.findOne({ email }).exec();
     if (candidate) {
-      throw  ApiError.BadRequest("Already exist");
+      throw ApiError.BadRequest("Already exist");
     }
     const hashPass = await bcrypt.hash(password, 5);
     const activationLink = uuid.v4();
@@ -25,13 +25,13 @@ export class UserService {
     return { ...tokens, user: userDto };
   }
 
-  async activate(activationLink){
-    const user = await userModel.findOne({activationLink})
-    if(!user){
-      throw  ApiError.BadRequest(" Incorrect link activation")
+  async activate(activationLink) {
+    const user = await userModel.findOne({ activationLink });
+    if (!user) {
+      throw ApiError.BadRequest(" Incorrect link activation");
     }
     user.isActive = true;
-    await user.save()
+    await user.save();
   }
 
   async getAllUsers() {

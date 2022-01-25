@@ -6,8 +6,17 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon node index.mjs",
-    "prettier": "prettier --write \"**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prettier": "prettier --config ./.prettierrc --write  \"**/*.{js,mjs}\"",
+    "lint": "eslint \"/**/*.{js,mjs}",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged",
+    "prepare": "cd .. && husky install front/.husky"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -19,6 +28,8 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^14.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.2",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
@@ -28,6 +39,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "eslint": "^8.7.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   }
