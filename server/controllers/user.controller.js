@@ -4,7 +4,6 @@ import { ApiError } from "../exceptions/api-exceptions.js";
 
 export class UserControler {
   async registration(req, res, next) {
-    
     const { email, password } = req.body;
     try {
       const error = validationResult(req);
